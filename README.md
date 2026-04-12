@@ -1,50 +1,84 @@
-# Welcome to your Expo app 👋
+# VitalLink
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native healthcare app built with Expo and Supabase that connects patients with their doctors.
 
-## Get started
+## About
 
-1. Install dependencies
+VitalLink is a mobile health platform that enables real-time communication and monitoring between patients and medical professionals. Patients can log their vitals and medications, connect with a doctor, and message them directly. Doctors can manage their patients, prescribe medications, view health data, and respond in real time.
 
+## Features
+
+### Patient
+- Log daily vitals (heart rate, blood pressure, blood sugar, weight)
+- View prescribed medications with morning / afternoon / evening schedules
+- Connect with a doctor by sending a request
+- Real-time messaging with your assigned doctor
+- Personal profile with date of birth, weight, and height
+
+### Doctor
+- Review and accept or decline incoming patient requests
+- View each patient's latest vitals, medications, and personal info
+- Prescribe medications directly to accepted patients
+- Real-time messaging with patients
+- Patient detail overview with health status indicators
+
+## Tech Stack
+
+- **React Native** + **Expo** (SDK 54)
+- **Supabase** — auth, database, row-level security, realtime
+- **Zustand** — global state management
+- **React Navigation** — stack + bottom tab navigation
+- **expo-secure-store** — secure session persistence
+
+## Project Structure
+
+```
+app/
+├── src/
+│   ├── components/       # Auth, MedCard, VitalCard
+│   ├── lib/              # Supabase client
+│   ├── screens/          # All app screens
+│   ├── store/            # Zustand store (useMedStore)
+│   └── types/            # TypeScript types
+└── App.tsx               # Navigation & role-based routing
+```
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies:
    ```bash
    npm install
    ```
-
-2. Start the app
-
+3. Create a `.env` file based on `.env.example`:
+   ```
+   EXPO_PUBLIC_SUPABASE_URL=your_supabase_url
+   EXPO_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
+   ```
+4. Start the app:
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+## Supabase Setup
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+The app requires the following tables in Supabase:
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- `profiles` — user info (full_name, role, date_of_birth, weight, height)
+- `vitals` — patient vitals linked to user_id
+- `medications` — medications linked to patient_id and doctor_id
+- `doctor_patient` — connection requests between patients and doctors (status: pending / active)
+- `messages` — chat messages between doctor and patient with realtime enabled
 
-## Get a fresh project
+All tables use Row Level Security (RLS) to ensure users can only access their own data.
 
-When you're ready, run:
+## Environment Variables
 
-```bash
-npm run reset-project
-```
+| Variable | Description |
+|---|---|
+| `EXPO_PUBLIC_SUPABASE_URL` | Your Supabase project URL |
+| `EXPO_PUBLIC_SUPABASE_ANON_KEY` | Your Supabase anonymous key |
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## License
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+MIT
