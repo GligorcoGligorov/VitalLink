@@ -79,6 +79,12 @@ All tables use Row Level Security (RLS) to ensure users can only access their ow
 | `EXPO_PUBLIC_SUPABASE_URL` | Your Supabase project URL |
 | `EXPO_PUBLIC_SUPABASE_ANON_KEY` | Your Supabase anonymous key |
 
+## Mockup
+<img width="1470" height="721" alt="Screenshot 2026-04-13 at 19 55 55" src="https://github.com/user-attachments/assets/7a77d964-13da-4ae0-8d16-7b9f6dabe365" />
+<img width="1470" height="595" alt="Screenshot 2026-04-13 at 19 56 09" src="https://github.com/user-attachments/assets/9d5863a1-d027-460a-be73-9026f5d8ca3c" />
+<img width="1470" height="623" alt="Screenshot 2026-04-13 at 19 56 17" src="https://github.com/user-attachments/assets/92f466a7-b791-4146-9db1-aac1296b6829" />
+
+
 ## License
 
 MIT
